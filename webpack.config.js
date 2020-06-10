@@ -90,6 +90,15 @@ const plugins = () => {
       }
     }),
     new CleanWebpackPlugin(),
+    new CopyWebpackPlugin({
+      patterns: 
+        [
+          {
+            from: path.resolve(__dirname, 'src/assets/Tree.glb'),
+            to: path.resolve(__dirname, 'dist')
+          }
+        ]
+    }),
     new MiniCssExtractPlugin({
       filename: filename('css')
     })
@@ -136,6 +145,17 @@ module.exports = {
       {
         test: /\.(png|jpg|svg|gif)$/,
         use: ['file-loader']
+      },
+      {
+        test: /\.(glb|gltf)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: 'assets/'
+            }
+          }
+        ]
       },
       {
         test: /\.s[ac]ss$/,

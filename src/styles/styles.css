@@ -1,5 +1,13 @@
 @import "~normalize.css";
 
+body{
+  margin: 0;
+}
+
+canvas {
+  display: block;
+}
+
 .container{
   padding-top: 2rem;
   max-width: 1000px;
